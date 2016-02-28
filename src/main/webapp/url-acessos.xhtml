@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:decorate template="/tema/template.xhtml">
+    <ui:define name="centro">
+        <h2>Contador de acessos</h2>
+        <p:dataTable value="#{urlAcessoListBean.urlAcessoList}" var="u">
+            <p:column headerText="Página">
+                <h:outputText value="#{u.url}"/>
+            </p:column>
+            <p:column headerText="Quantidade de acesso">
+                <h:outputText value="#{u.count}"/>
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+</ui:decorate>
+</html>

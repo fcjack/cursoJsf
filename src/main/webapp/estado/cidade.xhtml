@@ -1,0 +1,44 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:decorate template="/tema/template.xhtml">
+    <ui:define name="centro">
+        <h2>Cidade</h2>
+        <h:form>
+            <h:inputHidden value="#{cidadeBean.cidade.id}"/>
+            <h:inputHidden value="#{cidadeBean.estadoId}"/>
+            <h:panelGrid columns="2">
+                <h:outputText value="Id"/>
+                <p:inputText value="#{cidadeBean.cidade.id}" disabled="true"/>
+
+                <h:outputText value="Nome"/>
+                <p:inputText value="#{cidadeBean.cidade.nome}" rendered="true" requiredMessage="Nome é obrigatório"/>
+
+                <h:outputText value="Data da constituição"/>
+                <p:calendar locale="pt" pattern="dd/MM/yyyy" value="#{cidadeBean.cidade.dataContituicao}"
+                            rendered="true" requiredMessage="Data é obrigatória"/>
+
+                <h:outputText value="PIB"/>
+                <p:inputText value="#{cidadeBean.cidade.pib}" rendered="true" requiredMessage="PIB é obrigatório"/>
+
+                <h:outputText value="População"/>
+                <p:inputText value="#{cidadeBean.cidade.populacao}" rendered="true"
+                             requiredMessage="População é obrigatório"/>
+
+            </h:panelGrid>
+
+            <hr/>
+            <p:commandButton actionListener="#{cidadeBean.save}" update="@form"
+                             value="#{empty cidadeBean.cidade.id ? 'Salvar' : 'Atualizar'}"/>
+
+            <p:commandButton actionListener="#{cidadeBean.remove}" update="@form" value="Remover"/>
+            <p:button outcome="estado" value="Voltar">
+                <f:param name="id" value="#{cidadeBean.estadoId}"/>
+            </p:button>
+        </h:form>
+    </ui:define>
+</ui:decorate>
+</html>

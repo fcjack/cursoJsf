@@ -1,0 +1,31 @@
+group 'br.edu.fa7'
+
+apply plugin: 'java'
+apply plugin: 'war'
+apply plugin: 'eclipse-wtp'
+
+sourceCompatibility = 1.8
+targetCompatibility = 1.8
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    providedCompile(
+            'javax:javaee-api:7.0'
+    )
+
+    compile(
+            'org.primefaces:primefaces:5.3',
+            'com.h2database:h2:1.4.191'
+    )
+
+    compile('org.hibernate:hibernate-entitymanager:5.1.0.Final'){
+        exclude module: 'dom4j'
+    }
+
+    testCompile(
+            'junit:junit:4.12'
+    )
+}

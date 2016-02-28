@@ -1,0 +1,34 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:decorate template="/tema/template.xhtml">
+    <ui:define name="centro">
+        <h2>Usuário</h2>
+        <h:form>
+            <h:inputHidden value="#{userBean.user.id}"/>
+            <h:panelGrid columns="2">
+                <h:outputText value="Usuário"/>
+                <p:inputText value="#{userBean.user.username}"/>
+
+                <h:outputText value="CEP"/>
+                <p:inputMask value="#{userBean.user.cep}" mask="99999-999"
+                             converter="cepConverter" validator="cepValidator" />
+
+                <h:outputText value="Senha"/>
+                <p:password value="#{userBean.user.password}" match="pass2" feedback="true"
+                            validatorMessage="Senha não confere."/>
+
+                <h:outputText value="Confirmar senha"/>
+                <p:password id="pass2" value="#{userBean.user.password}"/>
+            </h:panelGrid>
+            <p:commandButton actionListener="#{userBean.save}" update="@form"
+                             value="#{empty userBean.user.id ? 'Salvar' : 'Atualizar'}"/>
+
+            <p:commandButton actionListener="#{userBean.remove}" update="@form" value="Remover"/>
+            <p:button outcome="user-list" value="Voltar"/>
+        </h:form>
+    </ui:define>
+</ui:decorate>
+</html>

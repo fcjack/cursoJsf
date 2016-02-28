@@ -1,0 +1,49 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+
+<h:head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
+    <title>Curso JSF</title>
+    <style type="text/css">
+        body {
+            background-color: #eeeeee;
+            font-size: 12px
+        }
+    </style>
+</h:head>
+<h:body>
+    <div align="center">
+        <p:layout>
+            <p:layoutUnit position="north">
+                <p:graphicImage url="/tema/images/topo.jpg" width="1200px" height="80"/>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="west">
+                <ui:insert name="menu">
+                    <h:form>
+                        <p:menu>
+                            <p:submenu label="#{userLogged}">
+                                <p:menuitem value="Usuários" icon="ui-icon-person" url="/user/user-list.xhtml"/>
+                                <p:menuitem value="Estados" icon="ui-icon-flag" url="/estado/estados.xhtml"/>
+                                <p:menuitem value="Contador de acessos" icon="ui-icon-circle-plus" url="/url-acessos.xhtml"/>
+                                <p:menuitem value="Jogo da Velha" icon=" ui-icon-radio-off" url="/jogo-da-velha/jogo.xhtml"/>
+                                <p:menuitem value="Logout" icon="ui-icon-circle-arrow-w" url="/logout.xhtml"/>
+                            </p:submenu>
+                        </p:menu>
+                    </h:form>
+                </ui:insert>
+            </p:layoutUnit>
+
+            <p:layoutUnit position="center">
+                <p:messages id="messages" autoUpdate="true" closable="true" />
+                <ui:insert name="centro">
+
+                </ui:insert>
+            </p:layoutUnit>
+
+        </p:layout>
+    </div>
+</h:body>
+</html>
