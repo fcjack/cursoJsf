@@ -15,7 +15,6 @@ public class Cidade extends AbstractEntity {
     private Date dataContituicao;
 
     @ManyToOne
-    @JoinColumn(name = "estado_id")
     private Estado estado;
 
     public String getNome() {

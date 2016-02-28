@@ -31,7 +31,7 @@ public abstract class AbstractCrudRepository<T extends AbstractEntity> implement
 
     @Override
     public void save(T entity) {
-        getCurrentSession().save(entity);
+        getCurrentSession().saveOrUpdate(entity);
         getCurrentSession().flush();
     }
 

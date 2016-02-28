@@ -1,6 +1,7 @@
 package br.edu.fa7.cursojsf.bean;
 
 import br.edu.fa7.cursojsf.model.Cidade;
+import br.edu.fa7.cursojsf.model.Estado;
 import br.edu.fa7.cursojsf.service.CidadeService;
 import br.edu.fa7.cursojsf.service.EstadoService;
 import br.edu.fa7.cursojsf.util.Alerta;
@@ -48,7 +49,8 @@ public class CidadeBean implements Serializable {
     }
 
     public void save() {
-        cidade.setEstado(estadoService.findById(estadoId));
+        if (cidade.getEstado() == null) cidade.setEstado(new Estado());
+        cidade.getEstado().setId(estadoId);
         cidadeService.save(cidade);
         alerta.info("Cidade salva com sucesso!");
     }

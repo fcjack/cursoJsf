@@ -1,9 +1,6 @@
 package br.edu.fa7.cursojsf.model;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.FetchType;
-import javax.persistence.OneToMany;
+import javax.persistence.*;
 import java.util.List;
 
 @Entity
@@ -12,7 +9,7 @@ public class Estado extends AbstractEntity {
     private String nome;
     private String sigla;
 
-    @OneToMany(mappedBy = "estado", orphanRemoval = true, cascade = CascadeType.REMOVE, fetch = FetchType.EAGER)
+    @OneToMany(mappedBy = "estado", fetch = FetchType.EAGER, cascade = CascadeType.REMOVE)
     private List<Cidade> cidades;
 
     public String getNome() {
