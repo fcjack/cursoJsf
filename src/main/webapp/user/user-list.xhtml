@@ -1,0 +1,28 @@
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+<ui:decorate template="/tema/template.xhtml">
+    <ui:define name="centro">
+        <h2>Lista de usuários</h2>
+        <p:dataTable value="#{userListBean.userList}" var="u">
+            <f:facet name="header">
+                <p:button outcome="user" value="Novo"/>
+            </f:facet>
+            <p:column headerText="Id" width="60">
+                <h:outputText value="#{u.id}"/>
+            </p:column>
+            <p:column headerText="Username">
+                <h:outputText value="#{u.username}"/>
+            </p:column>
+            <p:column headerText="Editar" width="60">
+                <p:button icon="ui-icon-pencil" outcome="user">
+                    <f:param name="id" value="#{u.id}"/>
+                </p:button>
+            </p:column>
+        </p:dataTable>
+    </ui:define>
+</ui:decorate>
+</html>
