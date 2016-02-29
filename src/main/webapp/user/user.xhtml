@@ -14,7 +14,7 @@
 
                 <h:outputText value="CEP"/>
                 <p:inputMask value="#{userBean.user.cep}" mask="99999-999"
-                             converter="cepConverter" validator="cepValidator" />
+                             converter="cepConverter" validator="cepValidator"/>
 
                 <h:outputText value="Senha"/>
                 <p:password value="#{userBean.user.password}" match="pass2" feedback="true"

@@ -17,31 +17,31 @@ public class JogoDaVelhaBean implements Serializable {
     @Inject
     protected JogoDaVelhaService service;
 
-    public void novoJogo() {
+    public void newGame() {
         service.iniciaNovoJogo();
     }
 
-    public boolean desabilitaCampo(String valorCampo) {
+    public boolean disableField(String valorCampo) {
         return !StringUtils.isEmpty(valorCampo) || service.isJogoFinalizado() || service.isJogoNaoIniciado() || service.isJogoEmpatado();
     }
 
-    public void marca(int position) {
+    public void shot(int position) {
         service.checkShot(position);
     }
 
-    public List<String> getCampo() {
+    public List<String> getField() {
         return service.getField();
     }
 
-    public boolean isJogoIniciado() {
+    public boolean isGameStarted() {
         return service.isJogoIniciado();
     }
 
-    public boolean isJogoFinalizado() {
+    public boolean isGameFinished() {
         return service.isJogoFinalizado();
     }
 
-    public boolean isJogoEmpatado() {
+    public boolean isGameDraw() {
         return service.isJogoEmpatado();
     }
 
