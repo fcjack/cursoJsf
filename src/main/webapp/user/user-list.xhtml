@@ -5,12 +5,16 @@
       xmlns:p="http://primefaces.org/ui">
 
 <ui:decorate template="/tema/template.xhtml">
-    <ui:define name="centro">
-        <h2>Lista de usuários</h2>
+    <ui:define name="header">
+        <span class="h3">Usuários</span>
+
+        <div class="pull-right">
+            <p:button outcome="user" value="Novo"/>
+        </div>
+    </ui:define>
+
+    <ui:define name="container">
         <p:dataTable value="#{userListBean.userList}" var="u">
-            <f:facet name="header">
-                <p:button outcome="user" value="Novo"/>
-            </f:facet>
             <p:column headerText="Id" width="60">
                 <h:outputText value="#{u.id}"/>
             </p:column>

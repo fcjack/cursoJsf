@@ -4,13 +4,15 @@
       xmlns:p="http://primefaces.org/ui">
 
 <ui:decorate template="/tema/template.xhtml">
-    <ui:define name="centro">
-        <h2>Contador de acessos</h2>
+    <ui:define name="header">
+        <span class="h3">Contador de acessos</span>
+    </ui:define>
+    <ui:define name="container">
         <p:dataTable value="#{urlAcessoListBean.urlAcessoList}" var="u">
             <p:column headerText="Página">
                 <h:outputText value="#{u.url}"/>
             </p:column>
-            <p:column headerText="Quantidade de acesso">
+            <p:column headerText="Quantidade de acessos">
                 <h:outputText value="#{u.count}"/>
             </p:column>
         </p:dataTable>

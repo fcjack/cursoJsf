@@ -19,13 +19,13 @@
                 <a class="navbar-brand" href="#">#{userLogged}</a>
             </div>
             <ul class="nav navbar-nav">
-                <li class="active"><h:link outcome="/user/user-list.xhtml"> Usuários</h:link>
+                <li><h:link outcome="/user/user-list.xhtml"> Usuários</h:link>
                 </li>
                 <li><h:link outcome="/estado/estados.xhtml"> Estados</h:link>
                 </li>
-                <li><h:link outcome="/url-acessos.xhtml"> Acessos</h:link>
+                <li><h:link outcome="/acessos/contagem.xhtml"> Acessos</h:link>
                 </li>
-                <li><h:link outcome="jogo-da-velha/jogo.xhtml"> Jogo da Velha</h:link>
+                <li><h:link outcome="/jogo-da-velha/jogo.xhtml"> Jogo da Velha</h:link>
                 </li>
             </ul>
             <form class="navbar-form navbar-right" action="../logout.xhtml">
@@ -35,13 +35,29 @@
     </div>
 
     <div class="container">
-        <div class="template-container">
-            <p:layoutUnit position="center">
-                <p:messages id="messages" autoUpdate="true" closable="true"/>
-                <ui:insert name="centro">
+        <div class="panel panel-default template-container">
+            <div class="panel-heading">
+                <p:layoutUnit position="center">
+                    <ui:insert name="header">
 
-                </ui:insert>
-            </p:layoutUnit>
+                    </ui:insert>
+                </p:layoutUnit>
+            </div>
+            <div class="panel-body wrapper">
+                <p:layoutUnit position="center">
+                    <p:messages id="messages" autoUpdate="true" closable="true"/>
+                    <ui:insert name="container">
+
+                    </ui:insert>
+                </p:layoutUnit>
+            </div>
+            <footer class="panel-footer">
+                <p:layoutUnit position="center">
+                    <ui:insert name="footer">
+
+                    </ui:insert>
+                </p:layoutUnit>
+            </footer>
         </div>
     </div>
     <h:outputScript target="body" type="application/javascript" library="vendor/bootstrap/dist/js"

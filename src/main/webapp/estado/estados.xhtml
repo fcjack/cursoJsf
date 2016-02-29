@@ -5,8 +5,14 @@
       xmlns:p="http://primefaces.org/ui">
 
 <ui:decorate template="/tema/template.xhtml">
-    <ui:define name="centro">
-        <h2>Estados</h2>
+    <ui:define name="header">
+        <span class="h3">Estados</span>
+        <div class="pull-right">
+            <p:button outcome="estado" value="Novo"/>
+            <p:button outcome="/index.xhtml" value="Cancelar"/>
+        </div>
+    </ui:define>
+    <ui:define name="container">
         <p:dataTable value="#{estadosBean.estados}" var="e">
             <p:column headerText="Id" width="60">
                 <h:outputText value="#{e.id}"/>
@@ -23,11 +29,6 @@
                 </p:button>
             </p:column>
         </p:dataTable>
-
-        <hr/>
-        <p:button outcome="estado" value="Novo"/>
-        <p:button outcome="/index.xhtml" value="Voltar"/>
-
     </ui:define>
 </ui:decorate>
 </html>

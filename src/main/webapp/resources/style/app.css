@@ -2,14 +2,64 @@ body {
     background-color: #eeeeee;
     font-size: 12px
 }
+
 .template-container {
-    box-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+    box-shadow: 1px 2px 8px rgba(0, 0, 0, 0.3);
     margin-top: 60px;
-    background-color: #FFF;
-    padding:    15px;
+}
+
+.wrapper {
+    padding: 15px 20px;
+}
+
+.wrapper-md {
+    padding: 20px 20px;
+}
+
+.m-b-md {
+    margin-bottom: 8px;
+}
+
+.m-t-md {
+    margin-top: 8px;
+}
+
+.m-l-md {
+    margin-left: 8px;
+}
+
+.m-r-md {
+    margin-right: 8px;
 }
 
 .ui-widget-content {
+    background: none;
     border: none;
-    padding: 15px;
+    padding: 0;
+    margin: 0;
 }
+
+.cell-block {
+    width: 115px;
+    height: 55px;
+    margin: 0;
+    float: left;
+    text-align: center;
+}
+
+.top-left, .top-right {
+    border-bottom: 1px solid black;
+}
+
+.top-center {
+    border-bottom: 1px solid black;
+    border-left: 1px solid black;
+    border-right: 1px solid black;
+}
+
+.gameToken {
+    font-size: 50px;
+    padding: 0px 40px;
+}
+
+
