@@ -10,7 +10,50 @@
     </ui:define>
 
     <ui:define name="container">
-        <h:form>
+        <h:form id="gameForm" prependId="false">
+            <p:commandButton action="#{bean.newGame}" value="Novo Jogo" update="gamePanel" styleClass="m-b-md"/>
+            <div class="row">
+                <div class="col-sm-6 wrapper-md">
+                    <div class="form-group">
+                        <label>Player 1</label>
+                        <p:inputText value="#{bean.player1.name}" styleClass="form-control m-b-md"></p:inputText>
+                    </div>
+                    <div class="form-group">
+                        <label>Player 2</label>
+                        <p:inputText value="#{bean.player2.name}" styleClass="form-control m-b-md"></p:inputText>
+                    </div>
+                </div>
+                <div class="col-sm-6">
+                    <p:outputPanel id="gamePanel">
+                    <span class="player-turn h3">
+                        <h:outputText value="Turno do jogador '#{bean.currentPlayer.name}'"
+                                      rendered="#{bean.gameStarted}"/>
+                        <h:outputText value="O vencedor é '#{bean.currentPlayer.name}'"
+                                      rendered="#{bean.gameFinished}"/>
+                        <h:outputText value="Empate!" rendered="#{bean.gameDraw}"/>
+                    </span>
+
+                        <div class="game-container wrapper-md">
+                            <ui:repeat value="#{bean.generateRow()}" var="i">
+                                <div class="game-row row">
+                                    <ui:repeat value="#{bean.generateRow()}" var="j">
+                                        <div class="col-sm-4 game-cell">
+                                            <h:commandButton styleClass="btn btn-default" action="#{bean.shot(i, j)}"
+                                                             value="#{bean.field(i,j)}"
+                                                             disabled="#{bean.disableField(i,j)}">
+                                                <p:ajax update=":gameForm:gamePanel"/>
+                                            </h:commandButton>
+                                        </div>
+                                    </ui:repeat>
+                                </div>
+                            </ui:repeat>
+                        </div>
+                    </p:outputPanel>
+                </div>
+            </div>
+
+        </h:form>
+        <!--<h:form>
             <p:commandButton action="#{bean.newGame}" value="Novo Jogo" update="gamePanel" styleClass="m-b-md"/>
 
             <p:panelGrid columns="1">
@@ -109,7 +152,7 @@
                     </div>
                 </h:panelGroup>
             </p:panelGrid>
-        </h:form>
+        </h:form> -->
     </ui:define>
 </ui:decorate>
 </html>

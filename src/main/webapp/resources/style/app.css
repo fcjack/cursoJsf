@@ -39,6 +39,27 @@ body {
     margin: 0;
 }
 
+/* Game definitions */
+.game-container {
+    width: 400px;
+    height: 400px;
+}
+
+.game-cell {
+    border: 1px solid #000;
+    height: 33.33%;
+    padding: 0;
+}
+
+.game-cell .btn {
+    font-size: 48px;
+    height: 100%;
+    width: 100%;
+}
+
+
+
+/* OLD */
 .cell-block {
     width: 115px;
     height: 55px;

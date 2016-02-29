@@ -8,6 +8,9 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
+import java.lang.reflect.Array;
+import java.util.Arrays;
+import java.util.List;
 
 @Named
 @ViewScoped
@@ -56,5 +59,7 @@ public class JogoDaVelhaBean implements Serializable {
         return service.getPlayer2();
     }
 
-
+    public List<Integer> generateRow() {
+        return Arrays.asList(0, 1, 2);
+    }
 }
