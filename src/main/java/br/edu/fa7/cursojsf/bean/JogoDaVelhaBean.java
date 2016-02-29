@@ -8,7 +8,6 @@ import javax.faces.view.ViewScoped;
 import javax.inject.Inject;
 import javax.inject.Named;
 import java.io.Serializable;
-import java.util.List;
 
 @Named
 @ViewScoped
@@ -21,16 +20,16 @@ public class JogoDaVelhaBean implements Serializable {
         service.iniciaNovoJogo();
     }
 
-    public boolean disableField(String valorCampo) {
-        return !StringUtils.isEmpty(valorCampo) || service.isGameFinished() || service.isGameReady() || service.isGameDraw();
+    public boolean disableField(Long row, Long column) {
+        return !StringUtils.isEmpty(field(row, column)) || service.isGameFinished() || service.isGameReady() || service.isGameDraw();
     }
 
-    public void shot(int position) {
-        service.checkShot(position);
+    public void shot(Long row, Long column) {
+        service.checkShot(row.intValue(), column.intValue());
     }
 
-    public List<String> getField() {
-        return service.getField();
+    public String field(Long row, Long column) {
+        return service.getField(row, column);
     }
 
     public boolean isGameStarted() {

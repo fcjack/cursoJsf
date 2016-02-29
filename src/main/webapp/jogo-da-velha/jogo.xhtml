@@ -68,69 +68,74 @@
                     </h3>
                     <div>
                         <div class="cell-block top-left">
-                            <h:commandLink styleClass="gamePosition" action="#{bean.shot(0)}"
-                                           disabled="#{bean.disableField(bean.field[0])}">
-                                <h:outputText value="#{bean.field[0]}"/>
+                            <h:commandLink styleClass="gamePosition" action="#{bean.shot(0, 0)}"
+                                           disabled="#{bean.disableField(0,0)}">
+
+                                <h:outputText value="#{bean.field(0,0)}"/>
                                 <p:ajax update="panelJogo"/>
                             </h:commandLink>
                         </div>
                         <div class="cell-block top-center">
-                            <h:commandLink styleClass="gamePosition" action="#{bean.shot(1)}"
-                                           disabled="#{bean.disableField(bean.field[1])}">
-                                <h:outputText value="#{bean.field[1]}"/>
+                            <h:commandLink styleClass="gamePosition" action="#{bean.shot(0, 1)}"
+                                           disabled="#{bean.disableField(0,1)}">
+
+                                <h:outputText value="#{bean.field(0,1)}"/>
                                 <p:ajax update="panelJogo"/>
                             </h:commandLink>
                         </div>
                         <div class="cell-block top-right">
-                            <h:commandLink styleClass="gamePosition" action="#{bean.shot(2)}"
-                                           disabled="#{bean.disableField(bean.field[2])}">
-                                <h:outputText value="#{bean.field[2]}"/>
+                            <h:commandLink styleClass="gamePosition" action="#{bean.shot(0, 2)}"
+                                           disabled="#{bean.disableField(0,2)}">
+
+                                <h:outputText value="#{bean.field(0,2)}"/>
                                 <p:ajax update="panelJogo"/>
                             </h:commandLink>
                         </div>
                     </div>
+
                     <div>
                         <div class="cell-block top-left">
-                            <h:commandLink styleClass="gamePosition" action="#{bean.shot(3)}"
-                                           disabled="#{bean.disableField(bean.field[3])}">
-                                <h:outputText value="#{bean.field[3]}"/>
+                            <h:commandLink styleClass="gamePosition" action="#{bean.shot(1,0)}"
+                                           disabled="#{bean.disableField(1,0)}">
+                                <h:outputText value="#{bean.field(1,0)}"/>
                                 <p:ajax update="panelJogo"/>
                             </h:commandLink>
                         </div>
                         <div class="cell-block top-center">
-                            <h:commandLink styleClass="gamePosition" action="#{bean.shot(4)}"
-                                           disabled="#{bean.disableField(bean.field[4])}">
-                                <h:outputText value="#{bean.field[4]}"/>
+                            <h:commandLink styleClass="gamePosition" action="#{bean.shot(1,1)}"
+                                           disabled="#{bean.disableField(1,1)}">
+                                <h:outputText value="#{bean.field(1,1)}"/>
                                 <p:ajax update="panelJogo"/>
                             </h:commandLink>
                         </div>
                         <div class="cell-block top-right">
-                            <h:commandLink styleClass="gamePosition" action="#{bean.shot(5)}"
-                                           disabled="#{bean.disableField(bean.field[5])}">
-                                <h:outputText value="#{bean.field[5]}"/>
+                            <h:commandLink styleClass="gamePosition" action="#{bean.shot(1,2)}"
+                                           disabled="#{bean.disableField(1,2)}">
+                                <h:outputText value="#{bean.field(1,2)}"/>
                                 <p:ajax update="panelJogo"/>
                             </h:commandLink>
                         </div>
                     </div>
+
                     <div>
-                        <div class="cell-block ">
-                            <h:commandLink styleClass="gamePosition" action="#{bean.shot(6)}"
-                                           disabled="#{bean.disableField(bean.field[6])}">
-                                <h:outputText value="#{bean.field[6]}"/>
+                        <div class="cell-block top-left">
+                            <h:commandLink styleClass="gamePosition" action="#{bean.shot(2,0)}"
+                                           disabled="#{bean.disableField(2,0)}">
+                                <h:outputText value="#{bean.field(2,0)}"/>
                                 <p:ajax update="panelJogo"/>
                             </h:commandLink>
                         </div>
-                        <div class="cell-block bottom-center">
-                            <h:commandLink styleClass="gamePosition" action="#{bean.shot(7)}"
-                                           disabled="#{bean.disableField(bean.field[7])}">
-                                <h:outputText value="#{bean.field[7]}"/>
+                        <div class="cell-block top-center">
+                            <h:commandLink styleClass="gamePosition" action="#{bean.shot(2,1)}"
+                                           disabled="#{bean.disableField(2,1)}">
+                                <h:outputText value="#{bean.field(2,1)}"/>
                                 <p:ajax update="panelJogo"/>
                             </h:commandLink>
                         </div>
-                        <div class="cell-block ">
-                            <h:commandLink styleClass="gamePosition" action="#{bean.shot(8)}"
-                                           disabled="#{bean.disableField(bean.field[8])}">
-                                <h:outputText value="#{bean.field[8]}"/>
+                        <div class="cell-block top-right">
+                            <h:commandLink styleClass="gamePosition" action="#{bean.shot(2,2)}"
+                                           disabled="#{bean.disableField(2,2)}">
+                                <h:outputText value="#{bean.field(2,2)}"/>
                                 <p:ajax update="panelJogo"/>
                             </h:commandLink>
                         </div>

@@ -7,9 +7,6 @@ import org.apache.commons.lang3.StringUtils;
 import javax.annotation.PostConstruct;
 import javax.enterprise.context.Dependent;
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
 import java.util.Random;
 
 @Dependent
@@ -21,24 +18,15 @@ public class JogoDaVelhaService implements Serializable {
     private Player nextPlayer;
     private Player lastWinner;
     private StatusJogo status;
-    private List<String> field;
-
-    private final List<int[]> combinations = Arrays.asList(
-            new int[]{0, 1, 2},
-            new int[]{3, 4, 5},
-            new int[]{6, 7, 8},
-            new int[]{0, 4, 8},
-            new int[]{6, 4, 2},
-            new int[]{0, 3, 6},
-            new int[]{1, 4, 7},
-            new int[]{2, 5, 8}
-    );
+    private String[][] allField;
 
     @PostConstruct
     public void init() {
         player1 = new Player("O");
         player2 = new Player("X");
         status = StatusJogo.READY;
+        allField = new String[3][3];
+        setupField();
     }
 
     public void iniciaNovoJogo() {
@@ -71,42 +59,96 @@ public class JogoDaVelhaService implements Serializable {
     }
 
     private void setupField() {
-        field = new ArrayList<String>(9);
-        for (int i = 0; i < 9; i++) {
-            field.add("");
-        }
+        for (int row = 0; row < 3; row++)
+            for (int column = 0; column < 3; column++)
+                allField[row][column] = "";
     }
 
-    public void checkShot(int position) {
-        field.set(position, currentPlayer.getCode());
-        verifyEndGame();
-        if (!status.equals(StatusJogo.FINISHED)) {
-            defineOrder(nextPlayer, currentPlayer);
+    public void checkShot(int row, int column) {
+        if (currentPlayer != null) {
+            allField[row][column] = currentPlayer.getCode();
+            verifyEndGame();
+            if (!status.equals(StatusJogo.FINISHED)) {
+                defineOrder(nextPlayer, currentPlayer);
+            }
         }
     }
 
     private void verifyEndGame() {
-        for (int[] combinacao : combinations) {
-
-            String shot = field.get(combinacao[0]);
-            if (!StringUtils.isEmpty(shot) && shot.equals(field.get(combinacao[1])) && shot.equals(field.get(combinacao[2]))) {
-                lastWinner = getWinner(shot);
-                status = StatusJogo.FINISHED;
-                return;
-            }
-        }
+        checkRows();
+        checkDiagonals();
+        checkColumns();
         checkDraw();
     }
 
-    private void checkDraw() {
-        int qtdChecked = 0;
-        for (String s : field) {
-            if (!StringUtils.isEmpty(s)) {
-                qtdChecked++;
+    private void checkRows() {
+        for (int row = 0; row < 3; row++) {
+            String first = allField[row][0];
+            String center = allField[row][1];
+            String right = allField[row][2];
+            if (!StringUtils.isEmpty(first) && !StringUtils.isEmpty(center) && !StringUtils.isEmpty(right)) {
+                if (first.equals(center) && first.equals(right)) {
+                    finishGame(allField[row][0]);
+                }
             }
         }
+    }
 
-        if (qtdChecked == 9) status = StatusJogo.DRAW;
+    private void checkColumns() {
+        if (!status.equals(StatusJogo.FINISHED)) {
+            for (int column = 0; column < 3; column++) {
+                String first = allField[0][column];
+                String center = allField[1][column];
+                String right = allField[2][column];
+                if (!StringUtils.isEmpty(first) && !StringUtils.isEmpty(center) && !StringUtils.isEmpty(right)) {
+                    if (allField[0][column].equals(allField[1][column]) && allField[0][column].equals(allField[2][column])) {
+                        finishGame(allField[0][column]);
+                    }
+                }
+            }
+        }
+    }
+
+    private void checkDiagonals() {
+        if (!status.equals(StatusJogo.FINISHED)) {
+            String leftUp = allField[0][0];
+            String center = allField[1][1];
+            String rightDown = allField[2][2];
+            String rightUp = allField[0][2];
+            String leftDown = allField[2][0];
+
+            if (!StringUtils.isEmpty(leftUp) && !StringUtils.isEmpty(center) && !StringUtils.isEmpty(rightDown)) {
+                if (leftUp.equals(center) && leftUp.equals(rightDown)) {
+                    finishGame(leftUp);
+                }
+            }
+
+            if (!StringUtils.isEmpty(rightUp) && !StringUtils.isEmpty(center) && !StringUtils.isEmpty(leftDown)) {
+                if (rightUp.equals(center) && rightUp.equals(leftDown)) {
+                    finishGame(rightUp);
+                }
+            }
+        }
+    }
+
+    private void finishGame(String shot) {
+        lastWinner = getWinner(shot);
+        status = StatusJogo.FINISHED;
+    }
+
+    private void checkDraw() {
+        if (!status.equals(StatusJogo.FINISHED)) {
+            int qtdChecked = 0;
+            for (int row = 0; row < 3; row++) {
+                for (int column = 0; column < 3; column++) {
+                    if (!StringUtils.isEmpty(allField[row][column])) {
+                        qtdChecked++;
+                    }
+                }
+            }
+
+            if (qtdChecked == 9) status = StatusJogo.DRAW;
+        }
     }
 
     private Player getWinner(String shot) {
@@ -117,8 +159,8 @@ public class JogoDaVelhaService implements Serializable {
         }
     }
 
-    public List<String> getField() {
-        return field;
+    public String getField(Long row, Long column) {
+        return allField[row.intValue()][column.intValue()];
     }
 
     public boolean isGameStarted() {
