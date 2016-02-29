@@ -22,7 +22,7 @@ public class PageCounter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         String url = req.getRequestURI();
-        if (url.endsWith(".xhtml") && !ignore(url)) {
+        if (url.endsWith(".xhtml") && !ignore(url) && !req.getMethod().equals("POST")) {
             urlAcessoService.incrementCountUrl(url);
         }
 

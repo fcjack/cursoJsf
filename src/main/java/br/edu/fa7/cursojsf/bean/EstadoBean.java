@@ -29,12 +29,8 @@ public class EstadoBean implements Serializable {
         if (id != null) {
             estado = estadoService.findById(Integer.parseInt(id));
         } else {
-            limpar();
+            clear();
         }
-    }
-
-    private void limpar() {
-        estado = new Estado();
     }
 
     public void save() {
@@ -44,11 +40,15 @@ public class EstadoBean implements Serializable {
 
     public void remove() {
         estadoService.remove(estado.getId());
-        limpar();
+        clear();
         alerta.info("Estado removido com sucesso!");
     }
 
     public Estado getEstado() {
         return estado;
+    }
+
+    private void clear() {
+        estado = new Estado();
     }
 }

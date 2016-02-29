@@ -20,8 +20,10 @@ public class CidadeBean implements Serializable {
 
     @Inject
     private CidadeService cidadeService;
+
     @Inject
     private EstadoService estadoService;
+
     @Inject
     private Alerta alerta;
 
@@ -38,14 +40,10 @@ public class CidadeBean implements Serializable {
         }
 
         if (id == null) {
-            limpar();
+            clear();
         } else {
             cidade = cidadeService.findById(Integer.parseInt(id));
         }
-    }
-
-    private void limpar() {
-        cidade = new Cidade();
     }
 
     public void save() {
@@ -57,8 +55,12 @@ public class CidadeBean implements Serializable {
 
     public void remove() {
         cidadeService.remove(cidade.getId());
-        limpar();
+        clear();
         alerta.info("Cidade removida com sucesso!");
+    }
+
+    private void clear() {
+        cidade = new Cidade();
     }
 
     public Cidade getCidade() {

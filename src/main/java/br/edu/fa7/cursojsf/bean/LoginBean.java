@@ -19,12 +19,12 @@ public class LoginBean {
 
     @Inject
     private UserService userService;
+
     @Inject
     private Alerta alerta;
 
     private String username;
     private String password;
-
 
     public void login() throws IOException {
         User user = userService.findByUsernameAndPassword(username, password);
