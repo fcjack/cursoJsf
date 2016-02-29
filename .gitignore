@@ -15,5 +15,7 @@
 # Maven
 target/
 
+out/
 .gradle/
-build
+build/
+src/main/webapp/resources/vendor/

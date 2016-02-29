@@ -5,47 +5,46 @@
 
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
-    <title>Curso JSF</title>
-    <style type="text/css">
-        body {
-            background-color: #eeeeee;
-            font-size: 12px
-        }
-    </style>
+    <title>Projeto do Curso de JSF</title>
+    <h:outputStylesheet rel="stylesheet" library="vendor/bootstrap/dist/css"
+                        name="bootstrap.min.css"></h:outputStylesheet>
+    <h:outputStylesheet rel="stylesheet" library="vendor/bootstrap/dist/css"
+                        name="bootstrap-theme.min.css"></h:outputStylesheet>
+    <h:outputStylesheet rel="stylesheet" library="style" name="app.css"></h:outputStylesheet>
 </h:head>
 <h:body>
-    <div align="center">
-        <p:layout>
-            <p:layoutUnit position="north">
-                <p:graphicImage url="/tema/images/topo.jpg" width="1200px" height="80"/>
-            </p:layoutUnit>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">#{userLogged}</a>
+            </div>
+            <ul class="nav navbar-nav">
+                <li class="active"><h:link outcome="/user/user-list.xhtml"> Usuários</h:link>
+                </li>
+                <li><h:link outcome="/estado/estados.xhtml"> Estados</h:link>
+                </li>
+                <li><h:link outcome="/url-acessos.xhtml"> Acessos</h:link>
+                </li>
+                <li><h:link outcome="jogo-da-velha/jogo.xhtml"> Jogo da Velha</h:link>
+                </li>
+            </ul>
+            <form class="navbar-form navbar-right" action="../logout.xhtml">
+                <button type="submit" class="btn btn-danger">Logout</button>
+            </form>
+        </div>
+    </div>
 
-            <p:layoutUnit position="west">
-                <ui:insert name="menu">
-                    <h:form>
-                        <p:menu>
-                            <p:submenu label="#{userLogged}">
-                                <p:menuitem value="Usuários" icon="ui-icon-person" url="/user/user-list.xhtml"/>
-                                <p:menuitem value="Estados" icon="ui-icon-flag" url="/estado/estados.xhtml"/>
-                                <p:menuitem value="Contador de acessos" icon="ui-icon-circle-plus"
-                                            url="/url-acessos.xhtml"/>
-                                <p:menuitem value="Jogo da Velha" icon=" ui-icon-radio-off"
-                                            url="/jogo-da-velha/jogo.xhtml"/>
-                                <p:menuitem value="Logout" icon="ui-icon-circle-arrow-w" url="/logout.xhtml"/>
-                            </p:submenu>
-                        </p:menu>
-                    </h:form>
-                </ui:insert>
-            </p:layoutUnit>
-
+    <div class="container">
+        <div class="template-container">
             <p:layoutUnit position="center">
                 <p:messages id="messages" autoUpdate="true" closable="true"/>
                 <ui:insert name="centro">
 
                 </ui:insert>
             </p:layoutUnit>
-
-        </p:layout>
+        </div>
     </div>
+    <h:outputScript target="body" type="application/javascript" library="vendor/bootstrap/dist/js"
+                    src="bootstrap.min.js"></h:outputScript>
 </h:body>
 </html>

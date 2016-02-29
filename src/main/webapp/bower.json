@@ -1,0 +1,32 @@
+{
+  "name": "projeto-jsf",
+  "version": "1.0.0",
+  "homepage": "https://github.com/fcjack/cursoJsf",
+  "authors": [
+    "Rubens Pinheiro <rubenspgcavalcante@gmail.com>",
+    "Jackson Coelho <fcjack@gmail.com>"
+  ],
+  "description": "Projeto para cadeira de JSF",
+  "main": "index.xhtml",
+  "moduleType": [
+    "amd",
+    "es6",
+    "globals",
+    "node"
+  ],
+  "keywords": [
+    "JSF",
+    "jogo",
+    "da",
+    "velha"
+  ],
+  "license": "MIT",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ]
+}

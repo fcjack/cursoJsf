@@ -1,0 +1,11 @@
+{
+  "name": "projeto-jsf",
+  "version": "1.0.0",
+  "description": "Projeto para cadeira de JSF",
+  "main": "index.xhtml",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Rubens Pinheiro e Jackson Coelho",
+  "license": "ISC"
+}

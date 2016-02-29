@@ -1,0 +1,15 @@
+body {
+    background-color: #eeeeee;
+    font-size: 12px
+}
+.template-container {
+    box-shadow: 1px 2px 4px rgba(0,0,0,0.3);
+    margin-top: 60px;
+    background-color: #FFF;
+    padding:    15px;
+}
+
+.ui-widget-content {
+    border: none;
+    padding: 15px;
+}
