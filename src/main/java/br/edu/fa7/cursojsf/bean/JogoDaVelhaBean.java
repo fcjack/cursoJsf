@@ -22,7 +22,7 @@ public class JogoDaVelhaBean implements Serializable {
     }
 
     public boolean disableField(String valorCampo) {
-        return !StringUtils.isEmpty(valorCampo) || service.isJogoFinalizado() || service.isJogoNaoIniciado() || service.isJogoEmpatado();
+        return !StringUtils.isEmpty(valorCampo) || service.isGameFinished() || service.isGameReady() || service.isGameDraw();
     }
 
     public void shot(int position) {
@@ -34,15 +34,15 @@ public class JogoDaVelhaBean implements Serializable {
     }
 
     public boolean isGameStarted() {
-        return service.isJogoIniciado();
+        return service.isGameStarted();
     }
 
     public boolean isGameFinished() {
-        return service.isJogoFinalizado();
+        return service.isGameFinished();
     }
 
     public boolean isGameDraw() {
-        return service.isJogoEmpatado();
+        return service.isGameDraw();
     }
 
     public Player getCurrentPlayer() {

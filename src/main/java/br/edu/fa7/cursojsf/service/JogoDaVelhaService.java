@@ -23,7 +23,7 @@ public class JogoDaVelhaService implements Serializable {
     private StatusJogo status;
     private List<String> field;
 
-    private final List<int[]> possiveisCombinacoes = Arrays.asList(
+    private final List<int[]> combinations = Arrays.asList(
             new int[]{0, 1, 2},
             new int[]{3, 4, 5},
             new int[]{6, 7, 8},
@@ -86,12 +86,11 @@ public class JogoDaVelhaService implements Serializable {
     }
 
     private void verifyEndGame() {
-        for (int[] combinacao : possiveisCombinacoes) {
+        for (int[] combinacao : combinations) {
+
             String shot = field.get(combinacao[0]);
-            if (!"".equals(shot)
-                    && shot.equals(field.get(combinacao[1]))
-                    && shot.equals(field.get(combinacao[2]))) {
-                lastWinner = getVencedor(shot);
+            if (!StringUtils.isEmpty(shot) && shot.equals(field.get(combinacao[1])) && shot.equals(field.get(combinacao[2]))) {
+                lastWinner = getWinner(shot);
                 status = StatusJogo.FINISHED;
                 return;
             }
@@ -102,15 +101,16 @@ public class JogoDaVelhaService implements Serializable {
     private void checkDraw() {
         int qtdChecked = 0;
         for (String s : field) {
-            qtdChecked += StringUtils.isEmpty(s) ? 0 : 1;
+            if (!StringUtils.isEmpty(s)) {
+                qtdChecked++;
+            }
         }
 
-        if (qtdChecked == 9)
-            status = StatusJogo.DRAW;
+        if (qtdChecked == 9) status = StatusJogo.DRAW;
     }
 
-    private Player getVencedor(String marca) {
-        if ("x".equalsIgnoreCase(marca)) {
+    private Player getWinner(String shot) {
+        if ("X".equalsIgnoreCase(shot)) {
             return player2;
         } else {
             return player1;
@@ -121,19 +121,19 @@ public class JogoDaVelhaService implements Serializable {
         return field;
     }
 
-    public boolean isJogoIniciado() {
+    public boolean isGameStarted() {
         return StatusJogo.STARTED.equals(status);
     }
 
-    public boolean isJogoFinalizado() {
+    public boolean isGameFinished() {
         return StatusJogo.FINISHED.equals(status);
     }
 
-    public boolean isJogoNaoIniciado() {
+    public boolean isGameReady() {
         return StatusJogo.READY.equals(status);
     }
 
-    public boolean isJogoEmpatado() {
+    public boolean isGameDraw() {
         return StatusJogo.DRAW.equals(status);
     }
 
