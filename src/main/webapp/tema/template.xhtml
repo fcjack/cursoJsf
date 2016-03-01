@@ -6,11 +6,11 @@
 <h:head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>Projeto do Curso de JSF</title>
-    <h:outputStylesheet rel="stylesheet" library="vendor/bootstrap/dist/css"
-                        name="bootstrap.min.css"></h:outputStylesheet>
-    <h:outputStylesheet rel="stylesheet" library="vendor/bootstrap/dist/css"
-                        name="bootstrap-theme.min.css"></h:outputStylesheet>
-    <h:outputStylesheet rel="stylesheet" library="style" name="app.css"></h:outputStylesheet>
+
+    <link rel="stylesheet" href="#{request.contextPath}/resources/vendor/bootstrap/dist/css/bootstrap.min.css"></link>
+    <link rel="stylesheet"
+          href="#{request.contextPath}/resources/vendor/bootstrap/dist/css/bootstrap-theme.min.css"></link>
+    <link rel="stylesheet" href="#{request.contextPath}/resources/style/app.css"></link>
 </h:head>
 <h:body>
     <div class="navbar navbar-inverse navbar-fixed-top">
@@ -19,13 +19,21 @@
                 <a class="navbar-brand" href="#">#{userLogged}</a>
             </div>
             <ul class="nav navbar-nav">
-                <li><h:link outcome="/user/user-list.xhtml"> Usuários</h:link>
+                <li><h:link outcome="/user/user-list.xhtml">
+                    <i class="glyphicon glyphicon-user"></i> Usuários
+                </h:link>
                 </li>
-                <li><h:link outcome="/estado/estados.xhtml"> Estados</h:link>
+                <li><h:link outcome="/estado/estados.xhtml">
+                    <i class="glyphicon glyphicon-globe"></i> Estados
+                </h:link>
                 </li>
-                <li><h:link outcome="/acessos/contagem.xhtml"> Acessos</h:link>
+                <li><h:link outcome="/acessos/contagem.xhtml">
+                    <i class="glyphicon glyphicon-arrow-down"></i> Acessos
+                </h:link>
                 </li>
-                <li><h:link outcome="/jogo-da-velha/jogo.xhtml"> Jogo da Velha</h:link>
+                <li><h:link outcome="/jogo-da-velha/jogo.xhtml">
+                    <i class="glyphicon glyphicon-th"></i> Jogo da Velha
+                </h:link>
                 </li>
             </ul>
             <form class="navbar-form navbar-right" action="../logout.xhtml">
@@ -60,7 +68,10 @@
             </footer>
         </div>
     </div>
-    <h:outputScript target="body" type="application/javascript" library="vendor/bootstrap/dist/js"
-                    src="bootstrap.min.js"></h:outputScript>
+    <script type="application/javascript"
+            src="#{request.contextPath}/resources/vendor/jquery/dist/jquery.min.js"></script>
+
+    <script type="application/javascript"
+            src="#{request.contextPath}/resources/vendor/bootstrap/dist/js/bootstrap.min.js"></script>
 </h:body>
 </html>

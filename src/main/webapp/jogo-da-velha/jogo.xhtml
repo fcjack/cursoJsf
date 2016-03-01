@@ -16,11 +16,13 @@
                 <div class="col-sm-6 wrapper-md">
                     <div class="form-group">
                         <label>Player 1</label>
-                        <p:inputText value="#{bean.player1.name}" styleClass="form-control m-b-md"></p:inputText>
+                        <p:inputText value="#{bean.player1.name}" styleClass="form-control m-b-md"
+                                     required="true"></p:inputText>
                     </div>
                     <div class="form-group">
                         <label>Player 2</label>
-                        <p:inputText value="#{bean.player2.name}" styleClass="form-control m-b-md"></p:inputText>
+                        <p:inputText value="#{bean.player2.name}" styleClass="form-control m-b-md"
+                                     required="true"></p:inputText>
                     </div>
                 </div>
                 <div class="col-sm-6">
@@ -53,106 +55,6 @@
             </div>
 
         </h:form>
-        <!--<h:form>
-            <p:commandButton action="#{bean.newGame}" value="Novo Jogo" update="gamePanel" styleClass="m-b-md"/>
-
-            <p:panelGrid columns="1">
-                <h:panelGroup>
-                    <h3><h:outputText value="Jogadores"/></h3>
-                    <h:panelGrid columns="2">
-                        <h:outputLabel value="O"/>
-                        <p:inputText value="#{bean.player1.name}" styleClass="form-control m-b-md"></p:inputText>
-                        <h:outputLabel value="X"/>
-                        <p:inputText value="#{bean.player2.name}" styleClass="form-control m-b-md"></p:inputText>
-                    </h:panelGrid>
-                    <hr/>
-                </h:panelGroup>
-                <h:panelGroup id="gamePanel">
-                    <h3>
-                        <h:outputText value="Turno do jogador '#{bean.currentPlayer.name}'"
-                                      rendered="#{bean.gameStarted}"/>
-                        <h:outputText value="O vencedor é '#{bean.currentPlayer.name}'"
-                                      rendered="#{bean.gameFinished}"/>
-                        <h:outputText value="Empate!"
-                                      rendered="#{bean.gameDraw}"/>
-                    </h3>
-                    <div>
-                        <div class="cell-block top-left">
-                            <h:commandLink styleClass="gameToken" action="#{bean.shot(0, 0)}"
-                                           disabled="#{bean.disableField(0,0)}">
-
-                                <h:outputText value="#{bean.field(0,0)}"/>
-                                <p:ajax update="gamePanel"/>
-                            </h:commandLink>
-                        </div>
-                        <div class="cell-block top-center">
-                            <h:commandLink styleClass="gameToken" action="#{bean.shot(0, 1)}"
-                                           disabled="#{bean.disableField(0,1)}">
-
-                                <h:outputText value="#{bean.field(0,1)}"/>
-                                <p:ajax update="gamePanel"/>
-                            </h:commandLink>
-                        </div>
-                        <div class="cell-block top-right">
-                            <h:commandLink styleClass="gameToken" action="#{bean.shot(0, 2)}"
-                                           disabled="#{bean.disableField(0,2)}">
-
-                                <h:outputText value="#{bean.field(0,2)}"/>
-                                <p:ajax update="gamePanel"/>
-                            </h:commandLink>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="cell-block top-left">
-                            <h:commandLink styleClass="gameToken" action="#{bean.shot(1,0)}"
-                                           disabled="#{bean.disableField(1,0)}">
-                                <h:outputText value="#{bean.field(1,0)}"/>
-                                <p:ajax update="gamePanel"/>
-                            </h:commandLink>
-                        </div>
-                        <div class="cell-block top-center">
-                            <h:commandLink styleClass="gameToken" action="#{bean.shot(1,1)}"
-                                           disabled="#{bean.disableField(1,1)}">
-                                <h:outputText value="#{bean.field(1,1)}"/>
-                                <p:ajax update="gamePanel"/>
-                            </h:commandLink>
-                        </div>
-                        <div class="cell-block top-right">
-                            <h:commandLink styleClass="gameToken" action="#{bean.shot(1,2)}"
-                                           disabled="#{bean.disableField(1,2)}">
-                                <h:outputText value="#{bean.field(1,2)}"/>
-                                <p:ajax update="gamePanel"/>
-                            </h:commandLink>
-                        </div>
-                    </div>
-
-                    <div>
-                        <div class="cell-block top-left">
-                            <h:commandLink styleClass="gameToken" action="#{bean.shot(2,0)}"
-                                           disabled="#{bean.disableField(2,0)}">
-                                <h:outputText value="#{bean.field(2,0)}"/>
-                                <p:ajax update="gamePanel"/>
-                            </h:commandLink>
-                        </div>
-                        <div class="cell-block top-center">
-                            <h:commandLink styleClass="gameToken" action="#{bean.shot(2,1)}"
-                                           disabled="#{bean.disableField(2,1)}">
-                                <h:outputText value="#{bean.field(2,1)}"/>
-                                <p:ajax update="gamePanel"/>
-                            </h:commandLink>
-                        </div>
-                        <div class="cell-block top-right">
-                            <h:commandLink styleClass="gameToken" action="#{bean.shot(2,2)}"
-                                           disabled="#{bean.disableField(2,2)}">
-                                <h:outputText value="#{bean.field(2,2)}"/>
-                                <p:ajax update="gamePanel"/>
-                            </h:commandLink>
-                        </div>
-                    </div>
-                </h:panelGroup>
-            </p:panelGrid>
-        </h:form> -->
     </ui:define>
 </ui:decorate>
 </html>

@@ -1,6 +1,9 @@
 body {
-    background-color: #eeeeee;
-    font-size: 12px
+    background-image: url("images/bg.png");
+}
+
+form {
+    margin: 0;
 }
 
 .template-container {
@@ -56,31 +59,3 @@ body {
     height: 100%;
     width: 100%;
 }
-
-
-
-/* OLD */
-.cell-block {
-    width: 115px;
-    height: 55px;
-    margin: 0;
-    float: left;
-    text-align: center;
-}
-
-.top-left, .top-right {
-    border-bottom: 1px solid black;
-}
-
-.top-center {
-    border-bottom: 1px solid black;
-    border-left: 1px solid black;
-    border-right: 1px solid black;
-}
-
-.gameToken {
-    font-size: 50px;
-    padding: 0px 40px;
-}
-
-

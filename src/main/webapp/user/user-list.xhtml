@@ -9,7 +9,7 @@
         <span class="h3">Usuários</span>
 
         <div class="pull-right">
-            <p:button outcome="user" value="Novo"/>
+            <h:button outcome="user" value="Novo" styleClass="btn btn-xs btn-info"/>
         </div>
     </ui:define>
 
@@ -22,9 +22,9 @@
                 <h:outputText value="#{u.username}"/>
             </p:column>
             <p:column headerText="Editar" width="60">
-                <p:button icon="ui-icon-pencil" outcome="user">
-                    <f:param name="id" value="#{u.id}"/>
-                </p:button>
+                <a href="user.xhtml?id=#{u.id}">
+                    <button class="btn btn-sm btn-default"><i class="glyphicon glyphicon-pencil"></i></button>
+                </a>
             </p:column>
         </p:dataTable>
     </ui:define>

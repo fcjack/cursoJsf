@@ -4,30 +4,54 @@
       xmlns:p="http://primefaces.org/ui">
 
 <ui:decorate template="/tema/template.xhtml">
-    <ui:define name="container">
-        <h2>Usuário</h2>
+    <ui:define name="header">
         <h:form>
-            <h:inputHidden value="#{userBean.user.id}"/>
-            <h:panelGrid columns="2">
-                <h:outputText value="Usuário"/>
-                <p:inputText value="#{userBean.user.username}"/>
+            <span class="h3">Usuário</span>
+        </h:form>
+    </ui:define>
 
-                <h:outputText value="CEP"/>
-                <p:inputMask value="#{userBean.user.cep}" mask="99999-999"
-                             converter="cepConverter" validator="cepValidator"/>
+    <ui:define name="container">
+        <h:form id="userForm">
+            <div class="col-sm-12">
+                <div class="btn-group btn-group-sm pull-right">
+                    <h:commandButton action="#{userBean.save}" update=":userForm" styleClass="btn btn-default"
+                                     value="#{empty userBean.user.id ? 'Salvar' : 'Atualizar'}">
+                        <p:ajax process="userForm" update=":userForm"></p:ajax>
+                    </h:commandButton>
 
-                <h:outputText value="Senha"/>
-                <p:password value="#{userBean.user.password}" match="pass2" feedback="true"
-                            validatorMessage="Senha não confere."/>
+                    <h:commandButton actionListener="#{userBean.remove}" update=":userForm" value="Remover"
+                                     styleClass="btn btn-default">
+                        <p:ajax process="userForm"></p:ajax>
+                    </h:commandButton>
+                    <h:button outcome="user-list" value="Voltar" styleClass="btn btn-default"/>
+                </div>
+            </div>
+            <div class="col-sm-4">
+                <h:inputHidden value="#{userBean.user.id}"/>
 
-                <h:outputText value="Confirmar senha"/>
-                <p:password id="pass2" value="#{userBean.user.password}"/>
-            </h:panelGrid>
-            <p:commandButton actionListener="#{userBean.save}" update="@form"
-                             value="#{empty userBean.user.id ? 'Salvar' : 'Atualizar'}"/>
+                <div class="form-group">
+                    <h:outputText value="Usuário"/>
+                    <h:inputText value="#{userBean.user.username}" required="true" styleClass="form-control"/>
+                </div>
 
-            <p:commandButton actionListener="#{userBean.remove}" update="@form" value="Remover"/>
-            <p:button outcome="user-list" value="Voltar"/>
+                <div class="form-group">
+                    <h:outputText value="CEP"/>
+                    <p:inputMask value="#{userBean.user.cep}" mask="99999-999" styleClass="form-control"
+                                 converter="cepConverter" validator="cepValidator"/>
+                </div>
+
+                <div class="form-group">
+                    <h:outputText value="Senha"/>
+                    <h:inputSecret value="#{userBean.user.password}" match="pass2" feedback="true"
+                                   validatorMessage="Senha não confere." styleClass="form-control"/>
+                </div>
+
+
+                <div class="form-group">
+                    <h:outputText value="Repetir senha"/>
+                    <h:inputSecret id="pass2" value="#{userBean.user.password}" styleClass="form-control"/>
+                </div>
+            </div>
         </h:form>
     </ui:define>
 </ui:decorate>

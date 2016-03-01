@@ -2,24 +2,38 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:p="http://primefaces.org/ui">
 
-<h:head></h:head>
+<h:head>
+    <link rel="stylesheet" href="#{request.contextPath}/resources/vendor/bootstrap/dist/css/bootstrap.min.css"></link>
+    <link rel="stylesheet"
+          href="#{request.contextPath}/resources/vendor/bootstrap/dist/css/bootstrap-theme.min.css"></link>
+    <link rel="stylesheet" href="#{request.contextPath}/resources/style/app.css"></link>
+</h:head>
 <body>
-<div align="center">
-    <p:messages id="messages" autoUpdate="true" closable="true"/>
+<p:messages id="messages" autoUpdate="true" closable="true"/>
+<div class="container wrapper-md col-sm-4 col-md-offset-4">
+    <h:form>
+        <div class="panel panel-info">
+            <div class="panel-heading text-center">
+                <i class="glyphicon glyphicon-pencil"></i> Trabalho de JSF
+            </div>
+            <div class="panel-body">
+                <div class="form-group">
+                    <h:outputText value="Usuário"/>
+                    <p:inputText value="#{loginBean.username}" styleClass="form-control" required="true"/>
+                </div>
+
+                <div class="form-group">
+                    <h:outputText value="Senha"/>
+                    <p:password value="#{loginBean.password}" styleClass="form-control" required="true"/>
+                </div>
+                <p:commandButton value="Entrar" actionListener="#{loginBean.login}" styleClass="btn btn-info btn-sm"/>
+            </div>
+            <footer class="panel-footer">
+                <span class="text-muted m-r-md"><i class="glyphicon glyphicon-user m-r-md"></i>Rubens Pinheiro</span>
+                <span class="text-muted m-l-md"><i class="glyphicon glyphicon-user m-r-md"></i>Jackson Coelho</span>
+            </footer>
+        </div>
+    </h:form>
 </div>
-<h:form>
-    <div align="center">
-        <h:panelGrid cols="2">
-            <h:outputText value="Usuário"/>
-            <p:inputText value="#{loginBean.username}"/>
-
-            <h:outputText value="Senha"/>
-            <p:password value="#{loginBean.password}"/>
-
-            <p:commandButton value="Entrar" actionListener="#{loginBean.login}"/>
-        </h:panelGrid>
-    </div>
-
-</h:form>
 </body>
 </html>

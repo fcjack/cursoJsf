@@ -8,8 +8,7 @@
     <ui:define name="header">
         <span class="h3">Estados</span>
         <div class="pull-right">
-            <p:button outcome="estado" value="Novo"/>
-            <p:button outcome="/index.xhtml" value="Cancelar"/>
+            <h:button outcome="estado" value="Novo" styleClass="btn btn-xs btn-info"/>
         </div>
     </ui:define>
     <ui:define name="container">
@@ -24,9 +23,9 @@
                 <h:outputText value="#{e.sigla}"/>
             </p:column>
             <p:column headerText="Editar" width="60">
-                <p:button icon="ui-icon-pencil" outcome="estado">
-                    <f:param name="id" value="#{e.id}"/>
-                </p:button>
+                <a href="estado.xhtml?id=#{e.id}">
+                    <button class="btn btn-sm btn-default"><i class="glyphicon glyphicon-pencil"></i></button>
+                </a>
             </p:column>
         </p:dataTable>
     </ui:define>
