@@ -19,3 +19,4 @@ out/
 .gradle/
 build/
 src/main/webapp/resources/vendor/
+node_modules/

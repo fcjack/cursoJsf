@@ -25,7 +25,6 @@ public class HttpListener implements PhaseListener {
         String uri = req.getRequestURI();
 
         HttpSession session = req.getSession(false);
-
         if (!ignore(uri) && !uri.contains("login.xhtml") && (session == null || (session.getAttribute("userLogged") == null))) {
             context.log("acesso nao autorizado: " + uri);
             try {

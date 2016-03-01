@@ -18,7 +18,6 @@ public class UrlAcessoService {
         }
 
         urlAcesso.incrementCount();
-
         urlAcessoRepository.save(urlAcesso);
     }
 

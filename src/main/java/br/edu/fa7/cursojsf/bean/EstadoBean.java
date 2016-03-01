@@ -29,7 +29,7 @@ public class EstadoBean implements Serializable {
         if (id != null) {
             estado = estadoService.findById(Integer.parseInt(id));
         } else {
-            clear();
+            estado = new Estado();
         }
     }
 
@@ -40,15 +40,12 @@ public class EstadoBean implements Serializable {
 
     public void remove() {
         estadoService.remove(estado.getId());
-        clear();
         alerta.info("Estado removido com sucesso!");
+        estado = new Estado();
     }
 
     public Estado getEstado() {
         return estado;
     }
 
-    private void clear() {
-        estado = new Estado();
-    }
 }

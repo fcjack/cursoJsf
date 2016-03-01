@@ -17,7 +17,7 @@ public class JogoDaVelhaBean implements Serializable {
     protected JogoDaVelhaService service;
 
     public void newGame() {
-        service.iniciaNovoJogo();
+        service.startGame();
     }
 
     public boolean disableField(Long row, Long column) {

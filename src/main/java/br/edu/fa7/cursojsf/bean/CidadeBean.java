@@ -35,14 +35,15 @@ public class CidadeBean implements Serializable {
         HttpServletRequest request = (HttpServletRequest) FacesContext.getCurrentInstance().getExternalContext().getRequest();
         String id = request.getParameter("id");
         String estado = request.getParameter("estado");
+
         if (estado != null) {
             estadoId = Integer.parseInt(estado);
         }
 
-        if (id == null) {
-            clear();
-        } else {
+        if (id != null) {
             cidade = cidadeService.findById(Integer.parseInt(id));
+        } else {
+            cidade = new Cidade();
         }
     }
 
@@ -55,11 +56,7 @@ public class CidadeBean implements Serializable {
 
     public void remove() {
         cidadeService.remove(cidade.getId());
-        clear();
         alerta.info("Cidade removida com sucesso!");
-    }
-
-    private void clear() {
         cidade = new Cidade();
     }
 

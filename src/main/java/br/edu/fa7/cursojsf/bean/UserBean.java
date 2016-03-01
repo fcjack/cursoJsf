@@ -30,7 +30,7 @@ public class UserBean implements Serializable {
         if (id != null) {
             user = userService.findById(Integer.parseInt(id));
         } else {
-            clear();
+            user = new User();
         }
     }
 
@@ -41,7 +41,6 @@ public class UserBean implements Serializable {
 
     public void remove() {
         userService.remove(user.getId());
-        clear();
         alerta.info("Usuário removido com sucesso!");
     }
 
@@ -49,7 +48,4 @@ public class UserBean implements Serializable {
         return user;
     }
 
-    private void clear() {
-        user = new User();
-    }
 }
