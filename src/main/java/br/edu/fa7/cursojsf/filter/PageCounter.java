@@ -22,7 +22,8 @@ public class PageCounter implements Filter {
     public void doFilter(ServletRequest request, ServletResponse response, FilterChain chain) throws IOException, ServletException {
         HttpServletRequest req = (HttpServletRequest) request;
         String url = req.getRequestURI();
-        if (url.endsWith(".xhtml") && !ignore(url) && !req.getMethod().equals("POST")) {
+        Boolean isAjax = Boolean.valueOf(req.getParameter("javax.faces.partial.ajax"));
+        if (url.endsWith(".xhtml") && !ignore(url) && !isAjax) {
             urlAcessoService.incrementCountUrl(url);
         }
 

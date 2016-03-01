@@ -29,7 +29,7 @@ public class JogoDaVelhaService implements Serializable {
         setupField();
     }
 
-    public void iniciaNovoJogo() {
+    public void startGame() {
         if (lastWinner != null) {
 
             Player nextPlayer;

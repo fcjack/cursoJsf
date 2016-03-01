@@ -1,7 +1,6 @@
 package br.edu.fa7.cursojsf.bean;
 
 import br.edu.fa7.cursojsf.model.User;
-import br.edu.fa7.cursojsf.repository.UserRepository;
 import br.edu.fa7.cursojsf.service.UserService;
 
 import javax.annotation.PostConstruct;
