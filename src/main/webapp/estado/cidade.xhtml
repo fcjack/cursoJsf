@@ -5,39 +5,66 @@
       xmlns:p="http://primefaces.org/ui">
 
 <ui:decorate template="/tema/template.xhtml">
+    <ui:define name="header">
+        <span class="h3">Cidade</span>
+    </ui:define>
+
     <ui:define name="container">
-        <h2>Cidade</h2>
-        <h:form>
-            <h:inputHidden value="#{cidadeBean.cidade.id}"/>
-            <h:inputHidden value="#{cidadeBean.estadoId}"/>
-            <h:panelGrid columns="2">
-                <h:outputText value="Id"/>
-                <p:inputText value="#{cidadeBean.cidade.id}" disabled="true"/>
+        <h:form id="cidadeForm">
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="btn-group btn-group-sm pull-right">
+                        <h:commandButton action="#{cidadeBean.save}" update=":estadoForm" styleClass="btn btn-default"
+                                         value="#{empty cidadeBean.cidade.id ? 'Salvar' : 'Atualizar'}">
+                            <p:ajax process="cidadeForm" update=":cidadeForm"></p:ajax>
+                        </h:commandButton>
 
-                <h:outputText value="Nome"/>
-                <p:inputText value="#{cidadeBean.cidade.nome}" rendered="true" requiredMessage="Nome é obrigatório"/>
+                        <h:commandButton actionListener="#{cidadeBean.remove}" update=":cidadeForm" value="Remover"
+                                         styleClass="btn btn-default">
+                            <p:ajax process="cidadeForm"></p:ajax>
+                        </h:commandButton>
+                        <h:button outcome="estado" value="Voltar" styleClass="btn btn-default">
+                            <f:param name="id" value="#{cidadeBean.estadoId}" />
+                        </h:button>
+                    </div>
+                </div>
+            </div>
 
-                <h:outputText value="Data da constituição"/>
-                <p:calendar locale="pt" pattern="dd/MM/yyyy" value="#{cidadeBean.cidade.dataContituicao}"
-                            rendered="true" requiredMessage="Data é obrigatória"/>
+            <div class="row">
+                <div class="col-sm-4">
+                    <h:inputHidden value="#{cidadeBean.cidade.id}"/>
+                    <h:inputHidden value="#{cidadeBean.estadoId}"/>
 
-                <h:outputText value="PIB"/>
-                <p:inputText value="#{cidadeBean.cidade.pib}" rendered="true" requiredMessage="PIB é obrigatório"/>
+                    <div class="form-group">
+                        <h:outputText value="Id"/>
+                        <h:inputText value="#{cidadeBean.cidade.id}" disabled="true" styleClass="form-control"/>
+                    </div>
 
-                <h:outputText value="População"/>
-                <p:inputText value="#{cidadeBean.cidade.populacao}" rendered="true"
-                             requiredMessage="População é obrigatório"/>
+                    <div class="form-group">
+                        <h:outputText value="Nome"/>
+                        <h:inputText value="#{cidadeBean.cidade.nome}" rendered="true" styleClass="form-control"
+                                     requiredMessage="Nome é obrigatório"/>
+                    </div>
 
-            </h:panelGrid>
+                    <div class="form-group">
+                        <h:outputText value="PIB"/>
+                        <h:inputText value="#{cidadeBean.cidade.pib}" rendered="true"
+                                     requiredMessage="PIB é obrigatório" styleClass="form-control"/>
+                    </div>
 
-            <hr/>
-            <p:commandButton actionListener="#{cidadeBean.save}" update="@form"
-                             value="#{empty cidadeBean.cidade.id ? 'Salvar' : 'Atualizar'}"/>
+                    <div class="form-group">
+                        <h:outputText value="População"/>
+                        <h:inputText value="#{cidadeBean.cidade.populacao}" rendered="true"
+                                     requiredMessage="População é obrigatório" styleClass="form-control"/>
+                    </div>
 
-            <p:commandButton actionListener="#{cidadeBean.remove}" update="@form" value="Remover"/>
-            <p:button outcome="estado" value="Voltar">
-                <f:param name="id" value="#{cidadeBean.estadoId}"/>
-            </p:button>
+                    <div class="form-group">
+                        <h:outputText value="Data da constituição"/><br/>
+                        <p:calendar locale="pt" pattern="dd/MM/yyyy" value="#{cidadeBean.cidade.dataContituicao}"
+                                    rendered="true" requiredMessage="Data é obrigatória"/>
+                    </div>
+                </div>
+            </div>
         </h:form>
     </ui:define>
 </ui:decorate>

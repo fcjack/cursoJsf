@@ -5,63 +5,88 @@
       xmlns:p="http://primefaces.org/ui">
 
 <ui:decorate template="/tema/template.xhtml">
+    <ui:define name="header">
+        <span class="h3">Estado</span>
+    </ui:define>
+
     <ui:define name="container">
-        <h2>Estado</h2>
-        <h:form>
+        <h:form id="estadoForm">
             <h:inputHidden value="#{estadoBean.estado.id}"/>
-            <h:panelGrid columns="2">
-                <h:outputText value="Id"/>
-                <p:inputText value="#{estadoBean.estado.id}" disabled="true"/>
+            <div class="row">
+                <div class="col-sm-12">
+                    <div class="btn-group btn-group-sm pull-right">
+                        <h:commandButton action="#{estadoBean.save}" update=":estadoForm" styleClass="btn btn-default"
+                                         value="#{empty estadoBean.estado.id ? 'Salvar' : 'Atualizar'}">
+                            <p:ajax process="estadoForm" update=":estadoForm"></p:ajax>
+                        </h:commandButton>
 
-                <h:outputText value="Nome"/>
-                <p:inputText value="#{estadoBean.estado.nome}" rendered="true" requiredMessage="Nome é obrigatório"/>
+                        <h:commandButton actionListener="#{estadoBean.remove}" update=":estadoForm" value="Remover"
+                                         styleClass="btn btn-default">
+                            <p:ajax process="estadoForm"></p:ajax>
+                        </h:commandButton>
+                        <h:button outcome="estados" value="Voltar" styleClass="btn btn-default"/>
+                    </div>
+                </div>
+            </div>
 
-                <h:outputText value="Sigla"/>
-                <p:inputText value="#{estadoBean.estado.sigla}" rendered="true" requiredMessage="Sigla é obrigatório"/>
+            <div class="row">
+                <div class="col-sm-4">
+                    <div class="form-group">
+                        <h:outputText value="Id"/>
+                        <h:inputText value="#{estadoBean.estado.id}" disabled="true" styleClass="form-control"/>
+                    </div>
 
-            </h:panelGrid>
+                    <div class="form-group">
+                        <h:outputText value="Nome"/>
+                        <h:inputText value="#{estadoBean.estado.nome}" rendered="true" styleClass="form-control"
+                                     requiredMessage="Nome é obrigatório"/>
+                    </div>
 
-            <p:dataTable value="#{estadoBean.estado.cidades}" var="c">
-                <f:facet name="header">
-                    <p:button icon="ui-icon-plus" value="Novo" disabled="#{empty estadoBean.estado.id}" outcome="cidade">
-                        <f:param name="estado" value="#{estadoBean.estado.id}"/>
-                    </p:button>
-                </f:facet>
-                <p:column headerText="Id" width="60">
-                    <h:outputText value="#{c.id}"/>
-                </p:column>
-                <p:column headerText="Nome">
-                    <h:outputText value="#{c.nome}"/>
-                </p:column>
-                <p:column headerText="Data da constituição">
-                    <h:outputText value="#{c.dataContituicao}">
-                        <f:convertDateTime pattern="dd/MM/yyyy"/>
-                    </h:outputText>
-                </p:column>
-                <p:column headerText="População">
-                    <h:outputText value="#{c.populacao}">
-                        <f:convertNumber locale="pt"/>
-                    </h:outputText>
-                </p:column>
-                <p:column headerText="PIB">
-                    <h:outputText value="#{c.pib}">
-                        <f:convertNumber locale="pt" currencySymbol="R$" type="currency"/>
-                    </h:outputText>
-                </p:column>
-                <p:column headerText="Editar" width="60">
-                    <p:button icon="ui-icon-pencil" outcome="cidade">
-                        <f:param name="id" value="#{c.id}"/>
-                        <f:param name="estado" value="#{estadoBean.estado.id}"/>
-                    </p:button>
-                </p:column>
-            </p:dataTable>
+                    <div class="form-group">
+                        <h:outputText value="Sigla"/>
+                        <h:inputText value="#{estadoBean.estado.sigla}" rendered="true" styleClass="form-control"
+                                     requiredMessage="Sigla é obrigatório"/>
+                    </div>
+                </div>
 
-            <hr/>
-            <p:commandButton actionListener="#{estadoBean.save}" update="@form"
-                             value="#{empty estadoBean.estado.id ? 'Salvar' : 'Atualizar'}"/>
-
-            <p:commandButton actionListener="#{estadoBean.remove}" update="@form" value="Remover"/>
-            <p:button outcome="estados" value="Voltar"/>
+                <div class="col-sm-12">
+                    <p:dataTable value="#{estadoBean.estado.cidades}" var="c">
+                        <f:facet name="header">
+                            <p:button icon="ui-icon-plus" value="Novo" disabled="#{empty estadoBean.estado.id}"
+                                      outcome="cidade">
+                                <f:param name="estado" value="#{estadoBean.estado.id}"/>
+                            </p:button>
+                        </f:facet>
+                        <p:column headerText="Id" width="60">
+                            <h:outputText value="#{c.id}"/>
+                        </p:column>
+                        <p:column headerText="Nome">
+                            <h:outputText value="#{c.nome}"/>
+                        </p:column>
+                        <p:column headerText="Data da constituição">
+                            <h:outputText value="#{c.dataContituicao}">
+                                <f:convertDateTime pattern="dd/MM/yyyy"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="População">
+                            <h:outputText value="#{c.populacao}">
+                                <f:convertNumber locale="pt"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="PIB">
+                            <h:outputText value="#{c.pib}">
+                                <f:convertNumber locale="pt" currencySymbol="R$" type="currency"/>
+                            </h:outputText>
+                        </p:column>
+                        <p:column headerText="Editar" width="60">
+                            <p:button icon="ui-icon-pencil" outcome="cidade">
+                                <f:param name="id" value="#{c.id}"/>
+                                <f:param name="estado" value="#{estadoBean.estado.id}"/>
+                            </p:button>
+                        </p:column>
+                    </p:dataTable>
+                </div>
+            </div>
         </h:form>
     </ui:define>
 </ui:decorate>
